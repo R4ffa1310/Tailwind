@@ -14,3 +14,5 @@ const store = configureStore({
 });
 
 export default store;
+
+// Catatan ini ditulis oleh Zahran
