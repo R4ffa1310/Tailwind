@@ -14,6 +14,7 @@ import Rincian from './pages/Rincian'
 import ThemeContext from './components/context/ThemeContext';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import DetailRestaurant from './pages/Detail';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,6 +32,7 @@ const [get, set] = useState();
     <Route path='/beranda' element={<Beranda/>} />
     <Route path='/profil' element={<Profil/>} />
     <Route path='/detail/:id' element={<Detail/>} />
+    <Route path='/detailRestaurant/:id' element={<DetailRestaurant/>} />
     <Route path='/rincian/:id' element={<Rincian/>} />
     <Route path='/product' element={<Product/>} />
     <Route path='/negara' element={<Negara/>} />
