@@ -42,7 +42,6 @@ const Beranda = () => {
 
   const theme = useSelector((state) => state.theme.theme);
   const dispatchRedux = useDispatch();
-  
 
   const ambilProduct = async () => {
     try {
@@ -65,8 +64,8 @@ const Beranda = () => {
       );
       const data = await response.data;
       // setProducts(data);
-      dispatch({ type: "SET_FILTER" , payload: data });
-      
+      dispatch({ type: "SET_FILTER", payload: data });
+
       // setHasilCari(response.data);
 
       setLoading(false);
@@ -78,11 +77,9 @@ const Beranda = () => {
   const ubahCari = useCallback(
     async (input) => {
       setCari({ cariproduct: input });
-     
     },
     [cariProduct]
   );
-
 
   useEffect(() => {
     if (cariProduct) {
@@ -101,15 +98,12 @@ const Beranda = () => {
   // console.log(state);
 
   return (
-    <div className="">
-      <button onClick={()=> dispatchRedux(toogleTheme())}>COBA DISPATCH</button>
     <BerandaView
       cariProduct={cariProduct}
       hasilCari={state.filterData}
       hasilFilter={hasilFilter}
       ubahCari={ubahCari}
     />
-    </div>
   );
 };
 
