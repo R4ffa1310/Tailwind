@@ -2,8 +2,8 @@ import React from "react";
 
 const Profil = () => {
   return (
-    <div>
-      <div className="chat chat-start">
+    <div className="p-12 min-h-screen">
+      <div className=" chat chat-start">
         <div className="chat-image avatar">
           <div className="w-10 rounded-full">
             <img

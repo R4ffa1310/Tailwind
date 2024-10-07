@@ -66,7 +66,7 @@ const Navbar = () => {
           <a className="btn btn-ghost text-xl">R44FFa</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+        <ul className="menu text-white font-bold menu-horizontal px-1">
             <li>
               <Link to="/profil">Profil</Link>
             </li>
@@ -100,10 +100,14 @@ const Navbar = () => {
             <summary className="btn m-1">Language</summary>
             <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
               <li>
-                <button onClick={() => dispatchRedux(setLang("id"))}>Indonesia</button>
+                <button onClick={() => dispatchRedux(setLang("id"))}>
+                  Indonesia
+                </button>
               </li>
               <li>
-              <button onClick={() => dispatchRedux(setLang("en"))}>English</button>
+                <button onClick={() => dispatchRedux(setLang("en"))}>
+                  English
+                </button>
               </li>
             </ul>
           </details>
@@ -112,15 +116,17 @@ const Navbar = () => {
             <summary className="btn m-1">User</summary>
             <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
               <li>
-                <button onClick={() => dispatchRedux(setUser("adm"))}>admin</button>
+                <button onClick={() => dispatchRedux(setUser("adm"))}>
+                  admin
+                </button>
               </li>
               <li>
-              <button onClick={() => dispatchRedux(setUser("suadm"))}>super admin</button>
+                <button onClick={() => dispatchRedux(setUser("suadm"))}>
+                  super admin
+                </button>
               </li>
             </ul>
           </details>
-
-        
 
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
