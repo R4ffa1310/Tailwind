@@ -88,7 +88,7 @@ const Negara = () => {
         
           const hasilFilter = cariProduct ? state.filterData : state.data;
         
-          console.log(state);
+          // console.log(state);
 
 
   return (

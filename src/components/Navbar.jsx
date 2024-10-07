@@ -1,29 +1,38 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ThemeContext from "./context/ThemeContext";
+import { toogleTheme } from "../store/action/ThemeAction";
+import { useDispatch, useSelector } from "react-redux";
+import { setLang } from "../store/action/langAction";
+import { setUser } from "../store/action/userAction";
 
 const Navbar = () => {
+  const [getTheme, setTheme] = useContext(ThemeContext);
+  const root = window.document.documentElement;
+  const lang = useSelector((state) => state.lang);
+  const user = useSelector((state) => state.user);
+  const theme = useSelector((state) => state.theme.theme);
 
-const [getTheme, setTheme] = useContext(ThemeContext);
-const root = window.document.documentElement;
+  const dispatchRedux = useDispatch();
 
-console.log(getTheme);
+  // console.log(lang);
+  console.log(user);
 
-const handleTheme = () => {
-  if(getTheme == "Light") {
-    setTheme("dark")
-    root.classList.remove("dark")
-    root.classList.add("Light")
-   } else{
-    setTheme("Light");
-    root.classList.remove("Light")
-    root.classList.add("dark")
-  }
-};
+  const handleTheme = () => {
+    if (getTheme == "Light") {
+      setTheme("dark");
+      root.classList.remove("dark");
+      root.classList.add("Light");
+    } else {
+      setTheme("Light");
+      root.classList.remove("Light");
+      root.classList.add("dark");
+    }
+  };
 
   return (
     <div>
-      <div className="navbar bg-base-100 bg-pink-300 dark:bg-gray-500">
+      <div className="navbar bg-pink-300 dark:bg-gray-500 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -87,6 +96,32 @@ const handleTheme = () => {
         </div>
 
         <div className="navbar-end">
+          <details className="dropdown">
+            <summary className="btn m-1">Language</summary>
+            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+              <li>
+                <button onClick={() => dispatchRedux(setLang("id"))}>Indonesia</button>
+              </li>
+              <li>
+              <button onClick={() => dispatchRedux(setLang("en"))}>English</button>
+              </li>
+            </ul>
+          </details>
+
+          <details className="dropdown">
+            <summary className="btn m-1">User</summary>
+            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+              <li>
+                <button onClick={() => dispatchRedux(setUser("adm"))}>admin</button>
+              </li>
+              <li>
+              <button onClick={() => dispatchRedux(setUser("suadm"))}>super admin</button>
+              </li>
+            </ul>
+          </details>
+
+        
+
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
             <input
@@ -95,7 +130,6 @@ const handleTheme = () => {
               value="synthwave"
               onChange={() => handleTheme()}
               checked={getTheme == "Light" ? true : false}
-              
             />
 
             {/* sun icon */}
@@ -116,6 +150,13 @@ const handleTheme = () => {
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
+
+          <input
+            onClick={() => dispatchRedux(toogleTheme())}
+            type="checkbox"
+            className="toggle"
+            defaultChecked
+          />
         </div>
       </div>
     </div>

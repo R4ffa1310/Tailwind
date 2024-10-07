@@ -3,6 +3,8 @@ import React, { useCallback, useEffect, useReducer, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import BerandaView from "./BerandaView";
 import { data } from "autoprefixer";
+import { useDispatch, useSelector } from "react-redux";
+import { toogleTheme } from "../../store/action/ThemeAction";
 
 const nilaiDefault = {
   data: [],
@@ -37,6 +39,10 @@ const Beranda = () => {
   const [loading, setLoading] = useState(true);
   const [cari, setCari] = useSearchParams();
   const cariProduct = cari.get("cariproduct");
+
+  const theme = useSelector((state) => state.theme.theme);
+  const dispatchRedux = useDispatch();
+  
 
   const ambilProduct = async () => {
     try {
@@ -92,15 +98,18 @@ const Beranda = () => {
 
   const hasilFilter = cariProduct ? state.filterData : state.data;
 
-  console.log(state);
+  // console.log(state);
 
   return (
+    <div className="">
+      <button onClick={()=> dispatchRedux(toogleTheme())}>COBA DISPATCH</button>
     <BerandaView
       cariProduct={cariProduct}
       hasilCari={state.filterData}
       hasilFilter={hasilFilter}
       ubahCari={ubahCari}
     />
+    </div>
   );
 };
 

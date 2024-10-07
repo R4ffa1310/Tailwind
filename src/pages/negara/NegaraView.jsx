@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NegaraView = ({ ubahCari, cariProduct, hasilCari, hasilFilter }) => {
   return (
-    <div>
+    <div className="beranda bg-pink-300 dark:bg-gray-500 ">
       <label className="input input-bordered flex items-center gap-2">
         <input
           type="text"
@@ -31,15 +31,11 @@ const NegaraView = ({ ubahCari, cariProduct, hasilCari, hasilFilter }) => {
         </p>
       )}
 
-      <div className="grid md:grid-cols-3 lg:grid-cols-3">
+      <div className="grid grid-cols-3 pt-4 gap-4">
         {hasilFilter?.map((data) => (
-          <div className="" key={data?.name}>
-            <div className="card bg-base-100 w-96 shadow-xl">
+            <div className="card bg-pink-200 dark:bg-black dark:text-white w-96 shadow-xl">
               <figure>
-                <img
-                  src={data.flag}
-                  alt={data.name}
-                />
+                <img src={data.flag} alt={data.name} />
               </figure>
               <div className="card-body">
                 <h1 className="card-title">{data.name}</h1>
@@ -52,7 +48,6 @@ const NegaraView = ({ ubahCari, cariProduct, hasilCari, hasilFilter }) => {
                 </div>
               </div>
             </div>
-          </div>
         ))}
       </div>
     </div>
