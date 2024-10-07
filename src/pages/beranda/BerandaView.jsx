@@ -33,26 +33,29 @@ const BerandaView = ({ ubahCari, cariProduct, hasilCari, hasilFilter }) => {
 
       <div className="grid grid-cols-3 pt-4 gap-4">
         {hasilFilter?.restaurants?.map((data) => (
-            <div className="card bg-pink-200 dark:bg-black dark:text-white w-96 shadow-xl">
-              <figure>
-                <img
-                  src={
-                    "https://restaurant-api.dicoding.dev/images/small/" +
-                    data.pictureId
-                  }
-                  alt={data.name}
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{data.name}</h2>
-                <p className="line-clamp-3">{data.description}</p>
-                <div className="card-actions justify-end">
-                  <Link to={"/Detail/" + data.id} className="btn btn-primary bg-slate-100 text-black ">
-                    View Details
-                  </Link>
-                </div>
+          <div className="card bg-pink-200 dark:bg-black dark:text-white w-96 shadow-xl">
+            <figure>
+              <img
+                src={
+                  "https://restaurant-api.dicoding.dev/images/small/" +
+                  data.pictureId
+                }
+                alt={data.name}
+              />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{data.name}</h2>
+              <p className="line-clamp-3">{data.description}</p>
+              <div className="card-actions justify-end">
+                <Link
+                  to={"/DetailRestaurant/" + data.id}
+                  className="btn btn-primary bg-slate-100 text-black "
+                >
+                  View Details
+                </Link>
               </div>
             </div>
+          </div>
         ))}
       </div>
     </div>
